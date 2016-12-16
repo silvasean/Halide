@@ -226,8 +226,9 @@ Stmt lower(const vector<Function> &output_funcs, const string &pipeline_name,
 
     debug(1) << "Unrolling...\n";
     s = unroll_loops(s);
-    s = simplify(s);
     debug(2) << "Lowering after unrolling:\n" << s << "\n\n";
+    s = simplify(s);
+    debug(2) << "Lowering after simplifying after unrolling:\n" << s << "\n\n";
 
     debug(1) << "Vectorizing...\n";
     s = vectorize_loops(s, t);
